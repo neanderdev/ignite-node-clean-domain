@@ -20,7 +20,7 @@ describe('Fetch Recent Questions', () => {
     await inMemoryQuestionsRepository.create(
       makeQuestion({ createdAt: new Date(2022, 0, 18) }),
     )
-    
+
     await inMemoryQuestionsRepository.create(
       makeQuestion({ createdAt: new Date(2022, 0, 23) }),
     )
