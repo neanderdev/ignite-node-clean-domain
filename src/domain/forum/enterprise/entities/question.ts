@@ -6,12 +6,15 @@ import { Optional } from '@/core/types/optional'
 
 import { Slug } from './value-objects/slug'
 
+import { QuestionAttachment } from './question-attachment'
+
 export interface QuestionProps {
   authorId: UniqueEntityID
   bestAnswerId?: UniqueEntityID
   title: string
   content: string
   slug: Slug
+  attachments: QuestionAttachment[]
   createdAt: Date
   updatedAt?: Date
 }
@@ -35,6 +38,10 @@ export class Question extends AggregateRoot<QuestionProps> {
 
   get slug() {
     return this.props.slug
+  }
+
+  get attachments() {
+    return this.props.attachments
   }
 
   get createdAt() {
@@ -67,6 +74,10 @@ export class Question extends AggregateRoot<QuestionProps> {
   set content(content: string) {
     this.props.content = content
     this.touch()
+  }
+
+  set attachments(attachments: QuestionAttachment[]) {
+    this.props.attachments = attachments
   }
 
   set bestAnswerId(bestAnswerId: UniqueEntityID | undefined) {
